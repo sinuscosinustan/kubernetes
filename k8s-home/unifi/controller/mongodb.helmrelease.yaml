@@ -1,0 +1,44 @@
+---
+apiVersion: source.toolkit.fluxcd.io/v1beta2
+kind: OCIRepository
+metadata:
+  name: bitnami
+  namespace: unifi
+spec:
+  interval: 10m
+  url: oci://registry-1.docker.io/bitnamicharts/mongodb
+  ref:
+    semver: '>=16.4.5 <16.5.0'
+---
+apiVersion: helm.toolkit.fluxcd.io/v2
+kind: HelmRelease
+metadata:
+  name: mongodb
+  namespace: unifi
+spec:
+  install:
+    remediation:
+      retries: -1
+  upgrade:
+    remediation:
+      retries: -1
+  interval: 5m
+  timeout: 20m
+  releaseName: mongodb
+  chartRef:
+    kind: OCIRepository
+    name: bitnami
+  values:
+    architecture: standalone
+    auth:
+      enabled: true
+      usernames:
+        - unifi
+      passwords:
+        - unifi
+      databases:
+        - unifi
+    persistence:
+      enabled: true
+      storageClass: longhorn
+      size: 10Gi

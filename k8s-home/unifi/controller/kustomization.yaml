@@ -7,3 +7,4 @@ resources:
   - unifi.statefulset.yaml
   - unifi.svc.yaml
   - unifi.ingress.yaml
+  - mongodb.helmrelease.yaml
