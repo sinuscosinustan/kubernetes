@@ -38,6 +38,7 @@ spec:
         - unifi
       databases:
         - unifi
+      rootPassword: unifi
     persistence:
       enabled: true
       storageClass: longhorn
