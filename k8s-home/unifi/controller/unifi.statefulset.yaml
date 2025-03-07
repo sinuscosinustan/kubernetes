@@ -54,7 +54,7 @@ spec:
             - name: MONGO_DBNAME
               value: 'unifi'
             - name: MONGO_AUTHSOURCE
-              value: 'admin'
+              value: 'unifi'
           resources:
             requests:
               cpu: '500m'
