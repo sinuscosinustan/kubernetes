@@ -31,7 +31,7 @@ spec:
   values:
     architecture: standalone
     auth:
-      enabled: false
+      enabled: true
       usernames:
         - unifi
       passwords:
